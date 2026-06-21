@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffd9e7" />
+  <title>지영's 꽃밭 — a little journey</title>
+  <meta name="description" content="Welcome to 지영's 꽃밭. Travel the path and meet many 지영s — they'll kickstart your adventure." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Gaegu:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <!-- Living, travelling flower-garden world -->
+  <canvas id="garden" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <button class="brand" id="home-btn" type="button" aria-label="처음으로">
+      <span class="brand-mark">✿</span>
+      <span class="brand-name">지영's 꽃밭</span>
+    </button>
+    <button class="ghost-btn" id="sound-btn" type="button" aria-pressed="false" title="소리 켜기/끄기">
+      <span class="sound-on" hidden>♪ on</span>
+      <span class="sound-off">♪ off</span>
+    </button>
+  </header>
+
+  <!-- INTRO — Welcome -->
+  <section class="overlay intro" id="intro">
+    <div class="intro-inner">
+      <p class="eyebrow reveal" data-delay="0">a little garden of many selves</p>
+      <h1 class="hero-title">
+        <span class="reveal" data-delay="1">Welcome to</span>
+        <span class="reveal hero-accent" data-delay="2">지영's 꽃밭</span>
+      </h1>
+      <p class="hero-sub reveal" data-delay="3">ENFP 지영, 꽃밭 키우는 중 🌷</p>
+      <button class="cta reveal" data-delay="4" id="start-btn" type="button">
+        <span>Start the journey</span><span class="cta-arrow">→</span>
+      </button>
+      <div class="intro-alt reveal" data-delay="5">
+        <button class="text-link" id="intro-map" type="button">또는, 지도에서 골라보기 ✿</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel onboarding toast -->
+  <div class="travel-hint" id="travel-hint" hidden>
+    <p class="th-line">Let's meet many <em>지영</em>s.</p>
+    <p class="th-line">They'll kickstart your adventure!</p>
+    <p class="th-controls">
+      <span class="key">scroll</span><span class="key">drag</span><span class="key">→</span>
+      길을 따라 걸어보세요
+    </p>
+  </div>
+
+  <!-- Station panel — blooms when you arrive at a 지영 -->
+  <aside class="station-panel" id="station-panel" hidden>
+    <span class="station-num"></span>
+    <h2 class="station-ko"></h2>
+    <p class="station-en"></p>
+    <button class="cta" id="station-open" type="button">이야기 열기 ✿</button>
+  </aside>
+
+  <!-- Chapter overlay — the story -->
+  <section class="overlay chapter" id="chapter" hidden>
+    <div class="chapter-inner">
+      <button class="back-btn" id="chapter-back" type="button">← 길로 돌아가기</button>
+      <p class="chapter-index" id="chapter-index">01</p>
+      <h2 class="chapter-title" id="chapter-title"></h2>
+      <p class="chapter-quote" id="chapter-quote"></p>
+      <div class="chapter-body" id="chapter-body"></div>
+      <nav class="chapter-nav">
+        <button class="ghost-btn" id="chapter-prev" type="button">← 이전 지영</button>
+        <button class="ghost-btn" id="chapter-next" type="button">다음 지영 →</button>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Map — pick any 지영 and jump straight to her -->
+  <section class="overlay map-overlay" id="map" hidden>
+    <div class="map-inner">
+      <button class="map-close" id="map-close" type="button" aria-label="닫기">✕</button>
+      <p class="map-eyebrow">지영의 꽃밭 지도</p>
+      <h2 class="map-title">누구부터 만날까요?</h2>
+      <p class="map-sub">마음 가는 지영을 골라 바로 떠나요 — 언제든 자유롭게 오갈 수 있어요</p>
+      <div class="map-grid" id="map-grid" role="list"></div>
+      <button class="map-rec" id="map-rec" type="button">✿ 아무나 추천해줘</button>
+    </div>
+  </section>
+
+  <!-- HUD — map + nav + trail -->
+  <footer class="hud" id="hud" hidden>
+    <button class="recommend" id="recommend" type="button">✿ 누구부터 만날까요?</button>
+    <div class="trail-wrap">
+      <button class="travel-arrow" id="go-prev" type="button" aria-label="이전">‹</button>
+      <div class="trail" id="trail"></div>
+      <button class="travel-arrow" id="go-next" type="button" aria-label="다음">›</button>
+    </div>
+  </footer>
+
+  <script src="assets/garden.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
